@@ -1,9 +1,10 @@
-import './App.css'
+import KanbanBoard from "./pages/kanbanBoard/KanbanBoard"
 
 function App() {
 
   return (
     <>
+      <KanbanBoard/>
     </>
   )
 }
