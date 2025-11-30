@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
 const Card = (props) => {
-  const { data } = props;
+  const { data, popOpenMethod } = props;
   return (
-    <div className="bg-secondry-bg-100 w-full font-primary rounded-lg p-2.5 space-y-1 cursor-pointer">
+    <div className="bg-secondry-bg-100 w-full font-primary rounded-lg p-2.5 space-y-2.5 cursor-pointer" onClick={() => popOpenMethod()}>
       <div className=" flex items-center gap-2.5">
         <img src="./office.svg" alt="office" />
         <div className="space-y-1 w-full">

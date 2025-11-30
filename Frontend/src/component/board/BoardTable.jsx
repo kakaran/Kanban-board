@@ -1,11 +1,26 @@
 import Column from "./Column";
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { moveCard } from "../../features/board/boardSlice";
+import PropTypes from "prop-types";
 
-const BordTable = () => {
+const BordTable = (props) => {
+  const { popOpenMethod } = props;
   const { data } = useSelector((state) => state.board);
+  const dispatch = useDispatch();
+
   const handleDragEnd = (result) => {
-    console.log(result);
+    const { source, destination, draggableId } = result;
+    if (!destination) return;
+    dispatch(
+      moveCard({
+        cardId: draggableId,
+        sourceCol: source.droppableId,
+        destCol: destination.droppableId,
+        sourceIndex: source.index,
+        destIndex: destination.index,
+      })
+    );
   };
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
@@ -17,6 +32,7 @@ const BordTable = () => {
               label={column?.title}
               cards={column?.cards}
               columnId={column?._id}
+              popOpenMethod={popOpenMethod}
             />
           ))}
         </div>
@@ -24,5 +40,10 @@ const BordTable = () => {
     </DragDropContext>
   );
 };
+
+BordTable.propTypes = {
+  popOpenMethod: PropTypes.func,
+};
+
 
 export default BordTable;

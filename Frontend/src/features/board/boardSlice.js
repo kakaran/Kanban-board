@@ -41,10 +41,39 @@ const initialState = {
 const boardSlice = createSlice({
   name: "board",
   initialState,
-  reducers: {},
+  reducers: {
+    moveCard(state, action) {
+      const { cardId, sourceCol, destCol, sourceIndex, destIndex } =
+        action.payload;
+
+      const stateDataSet = state.data;
+
+      if (!stateDataSet) return;
+
+      const sourceColumn = stateDataSet.columns.find(
+        (column) => column._id === sourceCol
+      );
+
+      const destColumn = state.data.columns.find(
+        (column) => column._id === destCol
+      );
+
+      if (!sourceColumn || !destColumn) return;
+
+      const card = sourceColumn.cards.find((columns) => columns._id === cardId);
+      if (!card) return;
+
+      // REMOVE from source column
+      sourceColumn.cards.splice(sourceIndex, 1);
+
+      // INSERT into destination column at specific index
+      destColumn.cards.splice(destIndex, 0, card);
+    },
+  },
   extraReducers: (builder) => {
     builder;
   },
 });
 
+export const { moveCard } = boardSlice.actions;
 export default boardSlice.reducer;

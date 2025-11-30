@@ -20,7 +20,6 @@ Button.propTypes = {
   Css: PropTypes.string,
   Method: PropTypes.func,
   children: PropTypes.node.isRequired,
-  BgFill: PropTypes.bool,
   type : PropTypes.string
 };
 

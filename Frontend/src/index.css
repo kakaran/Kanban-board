@@ -9,5 +9,11 @@
     --color-background-100 : #f5f9fe;
     --color-background-200 : #e9f2ff;
     --color-background-300 : #CFE2FC;
+    --color-background-400 : #e6eefb;
     --color-secondry-bg-100 : #F9FBFE
+}
+
+
+.scrollbar-none::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }

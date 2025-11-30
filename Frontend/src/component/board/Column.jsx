@@ -3,10 +3,9 @@ import Card from "./Card";
 import PropTypes from "prop-types";
 
 const Column = (props) => {
-  const { label, cards, columnId } = props;
-  console.log("co", columnId);
+  const { label, cards, columnId, popOpenMethod } = props;
   return (
-    <div className="flex flex-col h-full w-[318px] bg-background-200 rounded-xl shadow-sm">
+    <div className="flex flex-col h-full w-[318px] bg-background-400 rounded-xl shadow-sm">
       {/* HEADER */}
       <div className="font-primary bg-background-200 p-4 flex items-center justify-between font-medium rounded-t-xl border-b-2 border-[#e1edff]">
         <h3 className="text-lg">{label}</h3>
@@ -30,7 +29,7 @@ const Column = (props) => {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    <Card data={card} />
+                    <Card data={card} popOpenMethod={popOpenMethod} />
                   </div>
                 )}
               </Draggable>
@@ -47,6 +46,7 @@ Column.propTypes = {
   label: PropTypes.string,
   cards: PropTypes.array,
   columnId: PropTypes.string,
+  popOpenMethod : PropTypes.func
 };
 
 export default Column;
