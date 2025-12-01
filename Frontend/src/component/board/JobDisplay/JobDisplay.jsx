@@ -63,7 +63,10 @@ const JobDisplay = (props) => {
             <FaPencil />
           </Button>
         </div>
-        <h2>Description</h2>
+      </div>
+      <div className="px-5 py-3.5  space-y-2">
+        <h2 className="font-medium font-primary text-xl">Description</h2>
+        <pre>    text   </pre>
       </div>
     </Popup>
   );

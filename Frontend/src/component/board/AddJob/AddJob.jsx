@@ -36,7 +36,7 @@ const slectionOptions = useMemo(() =>{
       <div className="px-5 py-3.5 flex justify-between items-center border-b border-[#f0f0f0] ">
         <h2 className="font-normal text-md">Add Job</h2>
         <IoCloseOutline
-          className="cursor-pointer"
+          className="cursor-pointer text-2xl"
           onClick={() => popClosedMethod()}
         />
       </div>
